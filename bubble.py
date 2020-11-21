@@ -1,5 +1,5 @@
-def BubbleSort(list):
-    lenn = len(list)
+def BubbleSort(liste):
+    lenn = len(liste)
 
     for _ in range(lenn):
         for __ in range(0, lenn-_-1):
