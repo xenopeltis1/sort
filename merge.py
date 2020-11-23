@@ -1,60 +1,53 @@
-def mergeSort(arr):
-    if len(arr) > 1:
+def mergeSort(listt):
+
+    #array bir elemandan büyükse diye bir kontrol yapıyoruz. Eğer küçükse veya eşitse bölemeyiz
+    if len(listt) > 1:
  
-         # Finding the mid of the array
-        mid = len(arr)//2
+        #Ortakadi elemanı buluyoruz
+        mid = len(listt)//2
  
-        # Dividing the array elements
-        L = arr[:mid]
+        #Ortadaki elemandan ikiye bölüyoruz
+        solparca = listt[:mid]
  
-        # into 2 halves
-        R = arr[mid:]
+        #sağdaki parcamız
+        sagparca = listt[mid:]
  
-        # Sorting the first half
-        mergeSort(L)
+        #İki parçayı da parçalamaya devam ediyoruz
+        mergeSort(solparca)
  
-        # Sorting the second half
-        mergeSort(R)
+        #Diğer parçayı parçalıyoruz
+        mergeSort(sagparca)
  
-        i = j = k = 0
+        mi = 0
+        mkek = 0
+        mss = 0
  
-        # Copy data to temp arrays L[] and R[]
-        while i < len(L) and j < len(R):
-            if L[i] < R[j]:
-                arr[k] = L[i]
-                i += 1
+        # temp diziler oluşturuyoruz
+        while mi < len(solparca) and mkek < len(sagparca):
+            if solparca[mi] < sagparca[mkek]:
+                listt[mss] = solparca[mi]
+                mi += 1
             else:
-                arr[k] = R[j]
-                j += 1
-            k += 1
- 
-        # Checking if any element was left
-        while i < len(L):
-            arr[k] = L[i]
-            i += 1
-            k += 1
- 
-        while j < len(R):
-            arr[k] = R[j]
-            j += 1
-            k += 1
- 
-# Code to print the list
- 
- 
-def printList(arr):
-    for i in range(len(arr)):
-        print(arr[i], end=" ")
-    print()
- 
- 
-# Driver Code
-if __name__ == '__main__':
-    arr = [12, 11, 13, 5, 6, 7]
-    print("Given array is", end="\n")
-    printList(arr)
-    mergeSort(arr)
-    print("Sorted array is: ", end="\n")
-    printList(arr)
- 
-# This code is contributed by Mayank Khanna
+                listt[mss] = sagparca[mkek]
+                mkek += 1
+            mss += 1
+
+        #Diğer parçayı da
+        while mkek < len(sagparca):
+            listt[mss] = sagparca[mkek]
+            mkek += 1
+            mss += 1
+
+        # Parcaları kontrol ediyoruz
+        while mi < len(solparca):
+            listt[mss] = solparca[mi]
+            mi += 1
+            mss += 1
+
+    return listt
+
+listt = [5, 6, 9, 8, 2, 4, 787, 9]
+print(listt)
+listt = mergeSort(listt)
+
+print(listt)
