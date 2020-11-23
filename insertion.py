@@ -1,16 +1,20 @@
-def insertionSort(arr): 
-  
-    for i in range(1, len(arr)): 
-  
-        key = arr[i] 
-  
-        j = i-1
-        while j >= 0 and key < arr[j] : 
-                arr[j + 1] = arr[j] 
-                j -= 1
-        arr[j + 1] = key 
-    return arr
 
-arr = [12, 11, 13, 5, 6] 
-arr = insertionSort(arr)
+def insert(listt): 
+    
+    #birden başlayarak listenin uzunluğuna kadar gidecek bir döngü
+    for _ in range(1, len(listt)): 
+        
+        #bulunduğumuz geçiş
+        sira = arr[_] 
+  
+        esk = _-1
+        while sira < listt[esk] and esk >= 0: 
+                listt[esk + 1] = listt[esk] 
+                esk -= 1
+        listt[esk + 1] = sira
+        
+    return listt
+
+listt = [12, 11, 13, 5, 6] 
+arr = insert(listt)
 print(arr)
