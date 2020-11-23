@@ -1,26 +1,31 @@
-def partition(arr,low,high): 
-    i = ( low-1 )
-    pivot = arr[high] 
+def parcala(arr, kucuk, buyuk): 
+    i = ( kucuk-1 )
+    #en kucuk elemanı pivot olarak aldık
+    pivot = arr[kucuk] 
+    
+    #pivota göre parçalama
+    for _ in range(kucuk , buyuk): 
   
-    for j in range(low , high): 
-  
-        if   arr[j] < pivot: 
+        if   arr[_] < pivot: 
           
             i = i+1 
-            arr[i],arr[j] = arr[j],arr[i] 
+            arr[i],arr[_] = arr[_],arr[i] 
   
-    arr[i+1],arr[high] = arr[high],arr[i+1] 
-    return ( i+1 ) 
- 
-def quickSort(arr,low,high): 
-    if low < high: 
+    arr[i+1],arr[buyuk] = arr[buyuk],arr[i+1] 
 
-        pi = partition(arr,low,high) 
-        quickSort(arr, low, pi-1) 
-        quickSort(arr, pi+1, high) 
+    return ( i+1 ) 
+
+#sıralama
+def quick(arr, kucuk, buyuk): 
+    if kucuk< buyuk: 
+
+        pi = parcala(arr, kucuk, buyuk) 
+        quick(arr, kucuk, pi-1) 
+        quick(arr, pi+1, buyuk)
+
     return arr
   
 arr = [10, 7, 8, 9, 1, 5] 
 n = len(arr) 
-arr = quickSort(arr,0,n-1)
+arr = quick(arr, 0, n-1)
 print(arr)
